@@ -4,18 +4,42 @@ import numpy, pylab
 
 rcParams.update({
   'figure.autolayout'  : True,  
+  'figure.figsize'     : (8,6),
+  'figure.facecolor'   : [.75,.75,.75],
+  'figure.edgecolor'   : [0,0,0],
+  'figure.dpi'         : 100,
+  'text.usetex'        : False,
+  # Plot boundary properties
+  'axes.linewidth'     : .5,
+  'axes.edgecolor'     : [0,0,0,1],
+  'axes.facecolor'     : [1,1,1,1],
+  # Axes/Font spacing and size
   'font.size'          : 24,
-  'font.serif'         : ['Latin Modern Roman','Computer Modern Roman'], 
-  'font.sans-serif'    : ['Open Sans','Computer Modern Sans'],
-  'font.monospace'     : ['Anonymous Pro', 'Bitstream Vera Sans Mono'],
-  'legend.numpoints'   : 1,
   'axes.labelsize'     : 24,
   'axes.titlesize'     : 24,
   'xtick.major.pad'    : 8,
   'xtick.minor.pad'    : 8,
   'ytick.major.pad'    : 8,
   'ytick.minor.pad'    : 8,
-  'text.usetex'        : True,
+  'legend.numpoints'   : 1,
+  # Line and marker styles
+  'lines.linewidth'       : 1,
+  'lines.linestyle'       : '-',
+  'lines.color'           : 'k',
+  'lines.marker'          : None,
+  'lines.markeredgewidth' : 1,
+  'lines.markersize'      : 5,
+  'lines.linewidth'       : 1,
+  'lines.linewidth'       : 1,
+  'lines.linewidth'       : 1,
+  # Fonts
+  'font.serif'         : [ 'Times New Roman',
+      'Latin Modern Roman','Computer Modern Roman','Bitstream Vera Serif'
+  ], 
+  'font.sans-serif'    : [
+      'Open Sans','Computer Modern Sans','Bitstream Vera Sans'
+  ],
+  'font.monospace'     : ['Anonymous Pro', 'Bitstream Vera Sans Mono'],
 })
 
 class ColorBasis:
@@ -67,3 +91,7 @@ dyellow = numpy.array([0.6,0.6,0.0,0.6])
 dred    = numpy.array([0.6,0.0,0.0,0.6])
 
 font_style = hellaPy('serif')
+
+# axes style with auto layout and no labels
+#re = [.1408,.128,.79,.8115]
+
