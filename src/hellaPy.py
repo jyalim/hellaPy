@@ -72,6 +72,9 @@ class hellaPy:
   def __init__(self,*args):
     self.fontfamily = 'serif'
     self.usetex     = False
+    self.square     = (8,8)
+    self.rectangle  = (8,6)
+    self.figsize    = self.rectangle
     for arg in args:
       if arg == 'sans':
         self.fontfamily = 'sans-serif'
@@ -92,6 +95,14 @@ class hellaPy:
     rcParams.update({
       'text.usetex' : self.usetex 
     })
+    return None
+  
+  def set_figsize(self,figsize):
+    self.figsize = figsize
+    rcParams.update({
+      'figure.figsize' : self.figsize  
+    })
+    return None
 # End Class
 
 # Colors
