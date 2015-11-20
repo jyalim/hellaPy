@@ -8,7 +8,7 @@ rcParams.update({
   'figure.facecolor'   : [.75,.75,.75],
   'figure.edgecolor'   : [0,0,0],
   'figure.dpi'         : 100,
-  'text.usetex'        : False,
+  'text.usetex'        : True,
   # Plot boundary properties
   'axes.linewidth'     : .5,
   'axes.edgecolor'     : [0,0,0,1],
@@ -36,9 +36,9 @@ rcParams.update({
   'image.cmap'            : 'viridis',
   # Fonts
   'font.serif'         : [ 
-      'Times New Roman',
-      'Latin Modern Roman',
       'Computer Modern Roman',
+      'Latin Modern Roman',
+      'Times New Roman',
       'Bitstream Vera Serif',
   ], 
   'font.sans-serif'    : [
