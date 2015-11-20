@@ -36,8 +36,8 @@ rcParams.update({
   'image.cmap'            : 'viridis',
   # Fonts
   'font.serif'         : [ 
-      'Computer Modern Roman',
       'Latin Modern Roman',
+      'Computer Modern Roman',
       'Times New Roman',
       'Bitstream Vera Serif',
   ], 
@@ -73,6 +73,7 @@ class ColorBasis:
 class hellaPy:
   def __init__(self,*args):
     self.fontfamily = 'serif'
+    self.font       = 'Latin Modern Roman'
     self.usetex     = True
     self.square     = (8,8)
     self.rectangle  = (8,6)
@@ -90,6 +91,13 @@ class hellaPy:
     self.fontfamily = family
     rcParams.update({
       'font.family' : self.fontfamily,
+    })
+    return None
+
+  def set_font(self,font):
+    self.font = font
+    rcParams.update({
+      'font.{}'.format(self.fontfamily) : font,
     })
     return None
 
