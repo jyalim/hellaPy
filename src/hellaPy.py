@@ -1,4 +1,4 @@
-from matplotlib import use, rcParams
+from matplotlib import use, rcParams, cm
 use('Agg')
 import numpy, pylab
 
@@ -32,6 +32,8 @@ rcParams.update({
   'lines.linewidth'       : 1,
   'lines.linewidth'       : 1,
   'lines.linewidth'       : 1,
+  # Colormap
+  'image.cmap'            : ['viridis', 'hot'],
   # Fonts
   'font.serif'         : [ 
       'Times New Roman',
@@ -75,6 +77,7 @@ class hellaPy:
     self.square     = (8,8)
     self.rectangle  = (8,6)
     self.figsize    = self.rectangle
+    self.cmap       = 'viridis'
     for arg in args:
       if arg == 'sans':
         self.fontfamily = 'sans-serif'
@@ -103,12 +106,19 @@ class hellaPy:
       'figure.figsize' : self.figsize  
     })
     return None
+
+  def set_cmap(self,cmap):
+    self.cmap = cmap
+    rcParams.update({
+      'image.cmap' : self.cmap
+    })
+    return None
 # End Class
 
 # Colors
 yellow = numpy.array([1.0,1.0,0.0,0.8])
 red    = numpy.array([1.0,0.0,0.0,0.8])
-black  = numpy.array([0.0,0.0,0.0,0.0])
+black  = numpy.array([0.0,0.0,0.0,1.0])
 blue   = numpy.array([0.0,0.7,0.8,0.8])
 teal   = numpy.array([0.0,0.8,0.6,0.8])
 gray   = numpy.array([0.3,0.3,0.3,0.5])
@@ -116,7 +126,7 @@ gray   = numpy.array([0.3,0.3,0.3,0.5])
 dyellow = numpy.array([0.7,0.7,0.0,0.6])
 dred    = numpy.array([0.7,0.0,0.0,0.6])
 
-font_style = hellaPy('serif')
+default_style = hellaPy('serif')
 
 # axes style with auto layout and no labels
 #re = [.1408,.128,.79,.8115]
