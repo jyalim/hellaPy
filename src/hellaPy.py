@@ -73,7 +73,7 @@ class ColorBasis:
 class hellaPy:
   def __init__(self,*args):
     self.fontfamily = 'serif'
-    self.usetex     = False
+    self.usetex     = True
     self.square     = (8,8)
     self.rectangle  = (8,6)
     self.figsize    = self.rectangle
