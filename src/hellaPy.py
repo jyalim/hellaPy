@@ -33,7 +33,7 @@ rcParams.update({
   'lines.linewidth'       : 1,
   'lines.linewidth'       : 1,
   # Colormap
-  'image.cmap'            : ['viridis', 'hot'],
+  'image.cmap'            : 'viridis',
   # Fonts
   'font.serif'         : [ 
       'Times New Roman',
