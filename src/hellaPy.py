@@ -97,7 +97,7 @@ class hellaPy:
   def set_font(self,font):
     self.font = font
     rcParams.update({
-      'font.{}'.format(self.fontfamily) : font,
+      'font.{}'.format(self.fontfamily) : self.font,
     })
     return None
 
@@ -133,6 +133,8 @@ gray   = numpy.array([0.3,0.3,0.3,0.5])
 
 dyellow = numpy.array([0.7,0.7,0.0,0.6])
 dred    = numpy.array([0.7,0.0,0.0,0.6])
+
+greys   = cm.get_cmap(name='Greys')
 
 default_style = hellaPy('serif')
 
