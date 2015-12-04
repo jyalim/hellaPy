@@ -5,23 +5,33 @@ import numpy, pylab
 rcParams.update({
   'figure.autolayout'  : True,  
   'figure.figsize'     : (8,6),
-  'figure.facecolor'   : [.75,.75,.75],
-  'figure.edgecolor'   : [0,0,0],
+  'figure.facecolor'   : [1,1,1,0],
+  'figure.edgecolor'   : [0,0,0,1],
   'figure.dpi'         : 100,
   'text.usetex'        : True,
   # Plot boundary properties
-  'axes.linewidth'     : .5,
+  'axes.linewidth'     : 1.75,
   'axes.edgecolor'     : [0,0,0,1],
   'axes.facecolor'     : [1,1,1,1],
   # Axes/Font spacing and size
-  'font.size'          : 24,
-  'axes.labelsize'     : 24,
-  'axes.titlesize'     : 24,
-  'xtick.major.pad'    : 8,
-  'xtick.minor.pad'    : 8,
-  'ytick.major.pad'    : 8,
-  'ytick.minor.pad'    : 8,
-  'legend.numpoints'   : 1,
+  'font.size'            : 24,
+  'axes.labelsize'       : 24,
+  'axes.titlesize'       : 24,
+  'xtick.major.pad'      : 8,
+  'xtick.minor.pad'      : 8,
+  'xtick.major.size'     : 8,
+  'xtick.minor.size'     : 4,
+  'xtick.major.width'    : 1.5,
+  'xtick.minor.width'    : 1.5,
+  'xtick.minor.visible'  : True,
+  'ytick.major.pad'      : 8,
+  'ytick.minor.pad'      : 8,
+  'ytick.major.size'     : 8,
+  'ytick.minor.size'     : 4,
+  'ytick.major.width'    : 1.5,
+  'ytick.minor.width'    : 1.5,
+  'ytick.minor.visible'  : True,
+  'legend.numpoints'     : 1,
   # Line and marker styles
   'lines.linewidth'       : 1,
   'lines.linestyle'       : '-',
@@ -36,6 +46,7 @@ rcParams.update({
   'image.cmap'            : 'viridis',
   # Fonts
   'font.serif'         : [ 
+      'Times',
       'Latin Modern Roman',
       'Computer Modern Roman',
       'Times New Roman',
@@ -134,7 +145,7 @@ gray   = numpy.array([0.3,0.3,0.3,0.5])
 dyellow = numpy.array([0.7,0.7,0.0,0.6])
 dred    = numpy.array([0.7,0.0,0.0,0.6])
 
-greys   = cm.get_cmap(name='Greys')
+greycm  = cm.get_cmap(name='Greys_r')
 
 default_style = hellaPy('serif')
 
