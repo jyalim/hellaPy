@@ -1,6 +1,7 @@
 from matplotlib import use, rcParams, cm
 use('Agg')
 import numpy, pylab
+from sys import path
 
 rcParams.update({
   'figure.autolayout'  : True,  
@@ -14,18 +15,18 @@ rcParams.update({
   'axes.edgecolor'     : [0,0,0,1],
   'axes.facecolor'     : [1,1,1,1],
   # Axes/Font spacing and size
-  'font.size'            : 24,
-  'axes.labelsize'       : 24,
-  'axes.titlesize'       : 24,
-  'xtick.major.pad'      : 8,
-  'xtick.minor.pad'      : 8,
+  'font.size'            : 28,
+  'axes.labelsize'       : 28,
+  'axes.titlesize'       : 28,
+  'xtick.major.pad'      : 10,
+  'xtick.minor.pad'      : 10,
   'xtick.major.size'     : 8,
   'xtick.minor.size'     : 4,
   'xtick.major.width'    : 1.5,
   'xtick.minor.width'    : 1.5,
   'xtick.minor.visible'  : True,
-  'ytick.major.pad'      : 8,
-  'ytick.minor.pad'      : 8,
+  'ytick.major.pad'      : 10,
+  'ytick.minor.pad'      : 10,
   'ytick.major.size'     : 8,
   'ytick.minor.size'     : 4,
   'ytick.major.width'    : 1.5,
@@ -39,16 +40,13 @@ rcParams.update({
   'lines.marker'          : None,
   'lines.markeredgewidth' : 1,
   'lines.markersize'      : 5,
-  'lines.linewidth'       : 1,
-  'lines.linewidth'       : 1,
-  'lines.linewidth'       : 1,
   # Colormap
   'image.cmap'            : 'viridis',
   # Fonts
   'font.serif'         : [ 
-      'Times',
       'Latin Modern Roman',
       'Computer Modern Roman',
+      'Times',
       'Times New Roman',
       'Bitstream Vera Serif',
   ], 
@@ -167,3 +165,8 @@ title(title_string)                                                  \n\
 savefig("fig.eps")                                                   \n\
   ')
   return None
+
+def normalize(x,y0=0.,y1=1.):
+  x0, x1 = x.min(), x.max()
+  fp0    = ( y1 - y0 ) / ( x1 - x0 )
+  return y0 + ( x - x0 ) * fp0
