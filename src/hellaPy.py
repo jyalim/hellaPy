@@ -1,4 +1,4 @@
-from matplotlib import use, rcParams, cm
+from matplotlib import use, rcParams, cm, colors
 use('Agg')
 import numpy, pylab
 from sys import path
@@ -144,6 +144,32 @@ dyellow = numpy.array([0.7,0.7,0.0,0.6])
 dred    = numpy.array([0.7,0.0,0.0,0.6])
 
 greycm  = cm.get_cmap(name='Greys_r')
+graycm  = cm.get_cmap(name='gray')
+GRAYcm  = colors.ListedColormap( numpy.array([k//32/7*numpy.ones(3) for k in range(256)]))
+GRAYCM  = colors.ListedColormap( numpy.array([k//4/63*numpy.ones(3) for k in range(256)]))
+
+mycm = colors.LinearSegmentedColormap.from_list('mycm',[
+ ( 0   ,'#0000AF'),
+ ( 1/18,'#0000CC'),
+ ( 2/18,'#0000FF'),
+ ( 3/18,'#0E62F2'),
+ ( 4/18,'#0099FF'),
+ ( 5/18,'#00B7FF'),
+ ( 6/18,'#00DBFF'),
+ ( 7/18,'#5AE8FF'),
+ ( 8/18,'#AFF4FF'),
+ (.5   ,'#FFFFFF'),
+ (10/18,'#FFFFAF'),
+ (11/18,'#FFFF00'),
+ (12/18,'#FFE300'),
+ (13/18,'#FFC500'),
+ (14/18,'#F98B04'),
+ (15/18,'#F94F04'),
+ (16/18,'#FF0000'),
+ (17/18,'#CD0000'),
+ ( 1   ,'#AF0000')
+])
+
 
 default_style = hellaPy('serif')
 
