@@ -10,6 +10,7 @@ rcParams.update({
   'figure.edgecolor'   : [0,0,0,1],
   'figure.dpi'         : 100,
   'text.usetex'        : True,
+  'text.latex.preamble': [r'\usepackage{amsmath,bm}'],
   # Plot boundary properties
   'axes.linewidth'     : 1.75,
   'axes.edgecolor'     : [0,0,0,1],
