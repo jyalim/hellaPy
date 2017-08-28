@@ -10,7 +10,9 @@ rcParams.update({
   'figure.edgecolor'   : [0,0,0,1],
   'figure.dpi'         : 100,
   'text.usetex'        : True,
-  'text.latex.preamble': [r'\usepackage{amsmath,bm}'],
+  'text.latex.preamble': [
+    r'\usepackage{amsmath,amssymb,bm,siunitx}',
+  ],
   # Plot boundary properties
   'axes.linewidth'     : 1.75,
   'axes.edgecolor'     : [0,0,0,1],
@@ -253,3 +255,9 @@ def normalize(x,y0=0.,y1=1.):
   x0, x1 = x.min(), x.max()
   fp0    = ( y1 - y0 ) / ( x1 - x0 )
   return y0 + ( x - x0 ) * fp0
+
+def moving_average(x,N):
+  cs = numpy.cumsum(numpy.r_[0,x])
+  return (cs[N:]-cs[-N:])/N
+
+ma = moving_average
