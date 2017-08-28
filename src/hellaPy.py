@@ -35,7 +35,8 @@ rcParams.update({
   'ytick.major.width'    : 1.5,
   'ytick.minor.width'    : 1.5,
   'ytick.minor.visible'  : True,
-  'legend.numpoints'     : 1,
+  'legend.numpoints'     :  1,
+  'legend.fontsize'      : 18,
   # Line and marker styles
   'lines.linewidth'       : 1,
   'lines.linestyle'       : '-',
