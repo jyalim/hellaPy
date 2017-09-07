@@ -11,7 +11,8 @@ rcParams.update({
   'figure.dpi'         : 100,
   'text.usetex'        : True,
   'text.latex.preamble': [
-    r'\usepackage{amsmath,amssymb,bm,siunitx}',
+    r'\usepackage{amsmath,amssymb,bm}',
+    r'\usepackage{siunitx}',   # Doesn't work out of the box
   ],
   # Plot boundary properties
   'axes.linewidth'     : 1.75,
@@ -63,6 +64,8 @@ rcParams.update({
       'Anonymous Pro', 
       'Bitstream Vera Sans Mono'
   ],
+  # UNTESTED
+  'pgf.texsystem': 'lualatex',
 })
 
 class ColorBasis:
