@@ -262,6 +262,6 @@ def normalize(x,y0=0.,y1=1.):
 
 def moving_average(x,N):
   cs = numpy.cumsum(numpy.r_[0,x])
-  return (cs[N:]-cs[-N:])/N
+  return (cs[N:]-cs[:-N])/N
 
 ma = moving_average
