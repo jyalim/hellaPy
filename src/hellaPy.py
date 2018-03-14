@@ -1,6 +1,7 @@
 from matplotlib import use, rcParams, cm, colors
 use('Agg')
 import numpy, pylab
+import ctypes
 from sys import path
 
 rcParams.update({
@@ -12,7 +13,7 @@ rcParams.update({
   'text.usetex'        : True,
   'text.latex.preamble': [
     r'\usepackage{amsmath,amssymb,bm}',
-    r'\usepackage{siunitx}',   # Doesn't work out of the box
+#   r'\usepackage{siunitx}',
   ],
   # Plot boundary properties
   'axes.linewidth'     : 1.75,
@@ -29,6 +30,7 @@ rcParams.update({
   'xtick.major.width'    : 1.5,
   'xtick.minor.width'    : 1.5,
   'xtick.minor.visible'  : True,
+  'xtick.direction'      : 'in',
   'ytick.major.pad'      : 10,
   'ytick.minor.pad'      : 10,
   'ytick.major.size'     : 8,
@@ -36,6 +38,7 @@ rcParams.update({
   'ytick.major.width'    : 1.5,
   'ytick.minor.width'    : 1.5,
   'ytick.minor.visible'  : True,
+  'ytick.direction'      : 'in',
   'legend.numpoints'     :  1,
   'legend.fontsize'      : 18,
   # Line and marker styles
@@ -48,24 +51,24 @@ rcParams.update({
   # Colormap
   'image.cmap'            : 'viridis',
   # Fonts
-  'font.serif'         : [ 
+  'font.serif'            : [ 
       'Latin Modern Roman',
       'Computer Modern Roman',
       'Times',
       'Times New Roman',
       'Bitstream Vera Serif',
   ], 
-  'font.sans-serif'    : [
+  'font.sans-serif'       : [
       'Open Sans',
       'Computer Modern Sans',
       'Bitstream Vera Sans'
   ],
-  'font.monospace'     : [
+  'font.monospace'        : [
       'Anonymous Pro', 
       'Bitstream Vera Sans Mono'
   ],
-  # UNTESTED
-  'pgf.texsystem': 'lualatex',
+  ### Saving Figures
+# 'savefig.transparent'   : True,
 })
 
 class ColorBasis:
@@ -160,7 +163,7 @@ mysimpcm = colors.LinearSegmentedColormap.from_list('simple',[
  ( 1   ,'#000000')
 ],N=2)
 
-mycm19 = colors.LinearSegmentedColormap.from_list('mycm10',[
+mycm19 = colors.LinearSegmentedColormap.from_list('mycm19',[
  ( 0.   ,'#0000AF'),
  ( 1./18,'#0000CC'),
  ( 2./18,'#0000FF'),
@@ -171,10 +174,11 @@ mycm19 = colors.LinearSegmentedColormap.from_list('mycm10',[
  ( 7./18,'#5AE8FF'),
  ( 8./18,'#AFF4FF'),
  ( .5   ,'#FFFFFF'),
- (10./18,'#FFFFAF'),
- (11./18,'#FFFF00'),
- (12./18,'#FFE300'),
- (13./18,'#FFC500'),
+#(10./18,'#FFFF4D'),
+ (10./18,'#FFFF00'),
+ (11./18,'#FFE300'),
+ (12./18,'#FFC500'),
+ (13./14,'#FFAD00'),
  (14./18,'#F98B04'),
  (15./18,'#F94F04'),
  (16./18,'#FF0000'),
@@ -191,10 +195,11 @@ mycm15 = colors.LinearSegmentedColormap.from_list('mycm15',[
   ( 5./14,'#5AE8FF'),
   ( 6./14,'#AFF4FF'),
   ( 7./14,'#FFFFFF'),
-  ( 8./14,'#FFFFAF'),
-  ( 9./14,'#FFFF00'),
-  (10./14,'#FFE300'),
-  (11./14,'#FFC500'),
+# ( 8./14,'#FFFF4D'),
+  ( 8./14,'#FFFF00'),
+  ( 9./14,'#FFE300'),
+  (10./14,'#FFC500'),
+  (11./14,'#FFAD00'),
   (12./14,'#F98B04'),
   (13./14,'#F94F04'),
   (14./14,'#FF0000'),
@@ -225,13 +230,25 @@ myBlWh = colors.LinearSegmentedColormap.from_list('myBlWh',[
 
 myWhRd = colors.LinearSegmentedColormap.from_list('myWhRd',[
   ( 0./14,'#FFFFFF'),
-  ( 2./14,'#FFFFAF'),
-  ( 4./14,'#FFFF00'),
-  ( 6./14,'#FFE300'),
-  ( 8./14,'#FFC500'),
+# ( 2./14,'#FFFF4D'),
+  ( 2./14,'#FFFF00'),
+  ( 4./14,'#FFE300'),
+  ( 6./14,'#FFC500'),
+  ( 8./14,'#FFAD00'),
   (10./14,'#F98B04'),
   (12./14,'#F94F04'),
   (14./14,'#FF0000'),
+])
+
+myKWh = colors.LinearSegmentedColormap.from_list('myKWh',[
+  (  0./14,'#000000'),
+  (  2./14,'#0E62F2'),
+  (  4./14,'#0099FF'),
+  (  6./14,'#00B7FF'),
+  (  8./14,'#00DBFF'),
+  ( 10./14,'#5AE8FF'),
+  ( 12./14,'#AFF4FF'),
+  ( 14./14,'#FFFFFF'),
 ])
 
 default_style = hellaPy('serif')
@@ -265,3 +282,17 @@ def moving_average(x,N):
   return (cs[N:]-cs[:-N])/N
 
 ma = moving_average
+
+mkl_rt = ctypes.CDLL('libmkl_rt.so')
+mkl_max_threads = mkl_rt.mkl_get_max_threads()
+
+def mkl_set_num_threads(threads):
+  th = threads
+  if th > mkl_max_threads:
+    print('Threads: {:d} > {:d} Max Threads'.format(threads,mkl_max_threads))
+    th = 1
+  mkl_rt.mkl_set_num_threads(ctypes.byref(ctypes.c_int(th)))
+  print('MKL THREADS SET: {:d}'.format(th))
+  return None
+
+#mkl_set_num_threads(1)
