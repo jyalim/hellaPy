@@ -283,16 +283,21 @@ def moving_average(x,N):
 
 ma = moving_average
 
-mkl_rt = ctypes.CDLL('libmkl_rt.so')
-mkl_max_threads = mkl_rt.mkl_get_max_threads()
+try: 
+  mkl_rt = ctypes.CDLL('libmkl_rt.so')
+  mkl_max_threads = mkl_rt.mkl_get_max_threads()
 
-def mkl_set_num_threads(threads):
-  th = threads
-  if th > mkl_max_threads:
-    print('Threads: {:d} > {:d} Max Threads'.format(threads,mkl_max_threads))
-    th = 1
-  mkl_rt.mkl_set_num_threads(ctypes.byref(ctypes.c_int(th)))
-  print('MKL THREADS SET: {:d}'.format(th))
-  return None
+  def mkl_set_num_threads(threads):
+    th = threads
+    if th > mkl_max_threads:
+      print('Threads: {:d} > {:d} Max Threads'.format(threads,mkl_max_threads))
+      th = 1
+    mkl_rt.mkl_set_num_threads(ctypes.byref(ctypes.c_int(th)))
+    print('MKL THREADS SET: {:d}'.format(th))
+    return None
+except Exception as ex:
+  print('MKL ERROR -- ',ex)
+
+
 
 #mkl_set_num_threads(1)
