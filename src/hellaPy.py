@@ -174,7 +174,6 @@ mycm19 = colors.LinearSegmentedColormap.from_list('mycm19',[
  ( 7./18,'#5AE8FF'),
  ( 8./18,'#AFF4FF'),
  ( .5   ,'#FFFFFF'),
-#(10./18,'#FFFF4D'),
  (10./18,'#FFFF00'),
  (11./18,'#FFE300'),
  (12./18,'#FFC500'),
@@ -195,7 +194,6 @@ mycm15 = colors.LinearSegmentedColormap.from_list('mycm15',[
   ( 5./14,'#5AE8FF'),
   ( 6./14,'#AFF4FF'),
   ( 7./14,'#FFFFFF'),
-# ( 8./14,'#FFFF4D'),
   ( 8./14,'#FFFF00'),
   ( 9./14,'#FFE300'),
   (10./14,'#FFC500'),
@@ -230,7 +228,6 @@ myBlWh = colors.LinearSegmentedColormap.from_list('myBlWh',[
 
 myWhRd = colors.LinearSegmentedColormap.from_list('myWhRd',[
   ( 0./14,'#FFFFFF'),
-# ( 2./14,'#FFFF4D'),
   ( 2./14,'#FFFF00'),
   ( 4./14,'#FFE300'),
   ( 6./14,'#FFC500'),
@@ -297,7 +294,5 @@ try:
     return None
 except Exception as ex:
   print('MKL ERROR -- ',ex)
-
-
 
 #mkl_set_num_threads(1)
