@@ -177,7 +177,7 @@ mycm19 = colors.LinearSegmentedColormap.from_list('mycm19',[
  (10./18,'#FFFF00'),
  (11./18,'#FFE300'),
  (12./18,'#FFC500'),
- (13./14,'#FFAD00'),
+ (13./18,'#FFAD00'),
  (14./18,'#F98B04'),
  (15./18,'#F94F04'),
  (16./18,'#FF0000'),
