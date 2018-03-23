@@ -299,7 +299,7 @@ except Exception as ex:
 
 def no_ax_fax(k=1,Gamma=1):
   fig = figure(k,figsize=(6*Gamma,6))
-	ax  = Axes(fig,[0,0,1,1])
-	ax.set_axis_off()
-	fig.add_axes(ax)
-	return fig,ax
+  ax  = Axes(fig,[0,0,1,1])
+  ax.set_axis_off()
+  fig.add_axes(ax)
+  return fig,ax
