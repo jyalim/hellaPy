@@ -1,8 +1,15 @@
-from matplotlib import use, rcParams, cm, colors
+from matplotlib import use, rcParams, cm, colors,font_manager
 use('Agg')
 import numpy, pylab
 import ctypes
 from sys import path
+from pathlib import Path
+
+home_dir  = str(Path.home())
+font_dirs = ['{:s}/.local/etc/fonts'.format(home_dir),]
+font_recs = font_manager.findSystemFonts(fontpaths=font_dirs)
+font_list = font_manager.createFontList(font_recs)
+font_manager.fontManager.ttflist.extend(font_list)
 
 rcParams.update({
   'figure.autolayout'  : True,  
