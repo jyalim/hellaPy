@@ -297,9 +297,10 @@ except Exception as ex:
 
 #mkl_set_num_threads(1)
 
-def no_ax_fax(k=1,Gamma=1):
-  fig = pylab.figure(k,figsize=(6*Gamma,6))
+def no_ax_fax(k=1,Gamma=1,fs_base=6):
+  fig = pylab.figure(k,figsize=(fs_base*Gamma,fs_base))
   ax  = pylab.Axes(fig,[0,0,1,1])
   ax.set_axis_off()
+  fig.clf()
   fig.add_axes(ax)
   return fig,ax
