@@ -315,3 +315,9 @@ def no_ax_fax(k=1,Gamma=1,fs_base=6):
   fig.clf()
   fig.add_axes(ax)
   return fig,ax
+
+def mycontourf(*args,**kwargs):
+  cf = contourf(*args,**kwargs)
+  for c in cf.collections:
+    c.set_edgecolor('face')
+  return None
