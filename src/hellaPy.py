@@ -12,7 +12,7 @@ font_list = font_manager.createFontList(font_recs)
 font_manager.fontManager.ttflist.extend(font_list)
 
 rcParams.update({
-  'figure.autolayout'  : True,
+  'figure.autolayout'  : False,
   'figure.figsize'     : (8,6),
   'figure.facecolor'   : [1,1,1,0],
   'figure.edgecolor'   : [0,0,0,1],
@@ -102,6 +102,7 @@ class ColorBasis:
 
 class hellaPy:
   def __init__(self,*args):
+    self.autolayout = True
     self.fontfamily = 'serif'
     self.font       = 'Latin Modern Roman'
     self.usetex     = True
@@ -115,6 +116,13 @@ class hellaPy:
     rcParams.update({
       'font.family' : self.fontfamily,  
     }) 
+    return None
+
+  def set_autolayout(self,autolayout_flag):
+    self.autolayout = autolayout_flag
+    rcParams.update({
+      'figure.autolayout' : self.autolayout,
+    })
     return None
 
   def set_fontfamily(self,family):
@@ -314,6 +322,9 @@ def no_ax_fax(k=1,Gamma=1,fs_base=6):
   ax.set_axis_off()
   fig.clf()
   fig.add_axes(ax)
+  for a in fig.axes:
+    a.get_xaxis().set_visible(False)
+    a.get_yaxis().set_visible(False)
   return fig,ax
 
 def mycontourf(*args,**kwargs):
